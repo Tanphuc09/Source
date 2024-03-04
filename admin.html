@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin</title>
+	<style>
+		body {
+			background-image: url("https://www.bing.com/images/create/a-bunch-of-bananas-in-a-woven-basket-on-a-wooden-s/1-655eb6600c9c40af88088209f39f2bbf?id=P%2BVIckYvQ%2FmtHY2P631P%2FA%3D%3D&view=detailv2&idpp=genimg&idpclose=1&form=SYDBIC");
+			background-size: cover;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.wrapper {
+			width: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			position: relative;
+			margin: 0 auto;
+		}
+		.schoolImg {
+			margin-top: 30px;
+		}
+		table {
+			width: 500px;
+			height: 300px;
+		}
+		table tr {
+			text-align: center;
+		}
+		table thead tr {
+			background-color: #4a4e4d;
+		}
+		table thead tr th {
+			padding: 10px;
+			color: #ffffff;
+		}
+		table tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		table tr:nth-child(odd) {
+			background-color: #cccccc;
+		}
+		h1 {
+			margin-bottom: 10px;
+			color: #ffffff;
+		}
+		h4 {
+			margin: 5px;
+			color: #ffffff;
+		}
+		h3 {
+			color: #ffffff;
+		}
+	</style>
+    <!-- Thêm thư viện Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="schoolImg">
+			<img src="https://i.pinimg.com/originals/25/29/ff/2529fffff5adec4cc63d0efc7d52a7
+f4.png" width="150" height="190">
+		</div>
+		<h1>Graduation Project</h1>
+		<h4>Le Tan Luan - Phan Tan Phuc</h4>
+		<h3>The quantity of products</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Fruit's Name</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ChuoiLun</td>
+					<td id="chuoilun"></td>
+				</tr>
+				<tr>
+					<td>ChuoiSu</td>
+					<td id="chuoisu"></td>
+				</tr>
+				<tr>
+					<td>ChuoiCau</td>
+					<td id="chuoicau"></td>
+				</tr>
+				<tr>
+					<td>Other</td>
+					<td id="other"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+    <script>
+        // Cấu hình Firebase của bạn
+        var firebaseConfig = {
+            apiKey: "AIzaSyAyNG4W4mL6UadKlZKF7kCMw_HN5Z57PZE",
+            authDomain: "banana-classification-33254.firebaseapp.com",
+            databaseURL: "https://banana-classification-33254-default-rtdb.firebaseio.com",
+            projectId: "banana-classification-33254",
+            storageBucket: "banana-classification-33254.appspot.com",
+            messagingSenderId: "634448289439",
+            appId: "1:634448289439:web:8ece91312c67143701ccaa",
+            measurementId: "G-R1DJXX1DBL"
+        };
+
+        // Khởi tạo Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Lấy tham chiếu đến cơ sở dữ liệu
+        var dbRef = firebase.database().ref('banana_counts');
+
+        // Lấy dữ liệu
+        dbRef.on('value', function(snapshot) {
+            var data = snapshot.val();
+            document.getElementById('chuoicau').innerText = data.ChuoiCau || '0';
+            document.getElementById('chuoisu').innerText = data.ChuoiSu || '0';
+            document.getElementById('chuoilun').innerText = data.ChuoiLun || '0';
+            document.getElementById('other').innerText = data.Other || '0';
+        });
+    </script>
+</body>
+</html>

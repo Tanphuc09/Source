@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+body {
+    background-image: url('https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/270630319_646138706802110_9013562198811924589_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=hm9_b83F8qEAX8yKXy3&_nc_ht=scontent.fsgn5-2.fna&oh=00_AfDkrC8dWzROplm0uiwXW3576lEpQBJLBAaM8AURkBTD_w&oe=65633550');
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the start of the container */
+    height: 90vh; /* Adjusted this to move the login box up */
+    padding-top: 20px; /* Add some padding at the top */
+}
+.login-box {
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px black;
+    width: 300px;
+}
+h2 {
+    text-align: center;
+    color: #ffffff;
+}
+.inputt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+input[type="text"], input[type="password"] {
+    margin: 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    padding-left: 10px;
+}
+button {
+    margin-top: 20px;
+    width: 100px;
+    border-radius: 30px;
+    height: 30px;
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+button:hover {
+    background-color: tomato;
+    color: #ffffff;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="login-box">
+        <h2>Login</h2>
+        <div class="inputt">
+            <input type="text" placeholder="Username" id="name">
+            <input type="password" placeholder="Password" id="pass">
+            <button type="button" onclick="login()"><b>Login</b></button>
+        </div>
+    </div>
+</div>
+<script>
+function login(){
+    var name=document.getElementById('name');
+    var pass=document.getElementById('pass');
+    if(name.value =="phanloaichuoi"){
+        if(pass.value =="admin"){
+            window.location.href="./admin.html";
+        }
+        else{
+            alert("Sai tài khoản hoặc mật khẩu");
+        }
+    }
+    else{
+        alert("Sai tài khoản hoặc mật khẩu");
+    }
+}
+</script>
+</body>
+</html>
